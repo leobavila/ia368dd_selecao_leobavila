@@ -23,3 +23,29 @@ P_1                   	all	0.3947
 P_3                   	all	0.3728
 P_5                   	all	0.3342
 ```
+
+**Atualização em 23/02/2023:**
+
+Essa alteração foi realizada depois do prazo, mas surtiram efeitos legais no desempenho:
+
+Os parâmetros k1 e b foram alterados e a lista de stopwords foi atualizada para aquela fornecida pelo pacote nltk:
+
+* k1 = 2.2
+* b = 0.9
+
+```python
+import nltk
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+print(stopwords.words('english'))
+
+# Alteracao na classe BM25 ficaria da forma:
+# Stopwords to ignore
+self.stopwords = stopwords.words('english')
+```
+Tais modificações surtiram bom efeito nas métricas apresentadas anteriormente:
+```python
+P_1                   	all	0.5395
+P_3                   	all	0.4342
+P_5                   	all	0.3868
+```
